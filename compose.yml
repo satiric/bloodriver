@@ -1,0 +1,12 @@
+services:
+  server:
+    build: .
+    image: "node:20.9.0-alpine3.18"
+    command: "npm run start:prod" #pm2-runtime pm2.config.js --watch
+    working_dir: /app
+    volumes:
+      - .:/app/
+    env_file:
+      - .env
+    ports:
+      - "${PORT}:${PORT}"

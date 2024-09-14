@@ -1,8 +1,8 @@
 # Base image
-FROM node:20.5.0-alpine3.17
+FROM node:20.9.0-alpine3.18
 
 # Create app directory
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 COPY package*.json ./
@@ -11,6 +11,8 @@ COPY package*.json ./
 RUN apk add bash nano
 RUN npm install
 RUN npm install pm2 -g
+RUN npm install @nestjs/cli -g
+
 # Bundle app source
 COPY . .
 
